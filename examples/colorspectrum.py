@@ -30,45 +30,63 @@ pwm0 = Adafruit_PCA9685.PCA9685()
 #pwm2 = Adafruit_PCA9685.PCA9685(address=0x42, busnum=1)
 
 
-# Configure min and max servo pulse lengths
+# Configure min and max LED pulse lengths
 led_min = 0  # Min pulse length out of 4095
-led_max = 4095  # Max pulse length out of 4095
+led_max = 256  # Max pulse length out of 4095
 led_half = int(led_max/2)
 led_quart = int(led_max/4)
 
-#------------- Function originally for servo --------------#
-# Helper function to make setting a servo pulse width simpler.
-#def set_servo_pulse(channel, pulse):
-#	pulse_length = 1000000		# 1,000,000 us per second
-#	pulse_length //= 60		# 60 Hz
-#	print('{0}us per period'.format(pulse_length))
-#	pulse_length //= 4096		# 12 bits of resolution
-#	print('{0}us per bit'.format(pulse_length))
-#	pulse *= 1000
-#	pulse //= pulse_length
-#	pwm0.set_pwm(channel, 0, pulse)
+# Configure pulse lengths based on 256 steps for easy RGB conversion
+rgb_pwm = int(led_max/256)
 
-# Set frequency to 60hz, good for servos.
+# Set up easily readable variables for RGB color channels
+
+#-- Panel 0 --#
+red0 = 0
+green0 = 1
+blue0 = 2
+white0 = 3
+
+#-- Panel 1 --#
+red1 = 4
+green1 = 5
+blue1 = 6
+white1 = 7
+
+#-- Panel 2 --#
+red2 = 8
+green2 = 9
+blue2 = 10
+white2 = 11
+
+#-- Panel 3 --#
+red3 = 12
+green3 = 13
+blue3 = 14
+white3 = 15
+
+
+# Set frequency to 960hz, easy on the eyes.
 pwm0.set_pwm_freq(960)
 
 print('Simple color phase on RGB LED, bus 0, channels 0-2 , press Ctrl-C to quit...')
 while True:
-	# Move servo on channel O between extremes.
+	
 	# PWM syntax: pwm[bus].set_pwm([channel], [off state], [on state])
-	# Example: pwm0.set_pwm(0, 0, 4095)
-	pwm0.set_pwm(0, 0, led_max)
-	pwm0.set_pwm(1, 0, led_half)
-	pwm0.set_pwm(2, 0, led_quart)
-	time.sleep(0.1)
-	pwm0.set_pwm(0, 0, led_half)
-	pwm0.set_pwm(1, 0, led_max)
-	pwm0.set_pwm(2, 0, led_half)
-	time.sleep(0.1)
-	pwm0.set_pwm(0, 0, led_quart)
-	pwm0.set_pwm(1, 0, led_half)
-	pwm0.set_pwm(2, 0, led_max)
-	time.sleep(0.1)
-	pwm0.set_pwm(0, 0, led_half)
-	pwm0.set_pwm(1, 0, led_quart)
-	pwm0.set_pwm(2, 0, led_half)
-	time.sleep(0.1)
+	# Example: pwm0.set_pwm(0, 0, int(rgb_pwm*256))
+	pwm0.set_pwm(red0, 0, rgb_pwm*183)
+	pwm0.set_pwm(green0, 0, rgb_pwm*210)
+	pwm0.set_pwm(blue0, 0, rgb_pwm*255)
+#	time.sleep(0.1)
+#	pwm0.set_pwm(red0, 0, led_half)
+#	pwm0.set_pwm(green0, 0, led_max)
+#	pwm0.set_pwm(blue0, 0, led_half)
+#	time.sleep(0.1)
+#	pwm0.set_pwm(red0, 0, led_quart)
+#	pwm0.set_pwm(green0, 0, led_half)
+#	pwm0.set_pwm(blue0, 0, led_max)
+#	time.sleep(0.1)
+#	pwm0.set_pwm(red0, 0, led_half)
+#	pwm0.set_pwm(green0, 0, led_quart)
+#	pwm0.set_pwm(blue0, 0, led_half)
+#	time.sleep(0.1)
