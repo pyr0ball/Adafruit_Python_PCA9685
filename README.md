@@ -1,4 +1,5 @@
-# Adafruit Python PCA9685
+# This is a useability expansion on the Adafruit Python PCA9685 library
+## Adafruit Python PCA9685
 Python code to use the PCA9685 PWM servo/LED controller with a Raspberry Pi or BeagleBone black.
 
 ## Installation
@@ -17,7 +18,7 @@ Alternatively you can install from pip with:
 
 Note that the pip install method **won't** install the example code.
 
-# This is a useability expansion on the Adafruit Python PCA9685 library
+### New additions:
 
 There are two new example scripts, and more complete set of explainations in the scripts.
 
@@ -35,7 +36,7 @@ Example:
 
 The above example sets all four PWM channels (RGBW) to full color and brightness on i2c bus 1, PWM controller 0 (0x40)
 
-# Parameters for rgb_control (i2c parameters are listed for Raspberry Pi. Other platforms may differ)
+### Parameters for rgb_control (i2c parameters are listed for Raspberry Pi. Other platforms may differ)
 
  - i2c_index: 0,1 (default is 1)
  - i2c_address: 0-64 (default is 0, script handles conversion to hex and offset)
