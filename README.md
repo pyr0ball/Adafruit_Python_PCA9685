@@ -35,7 +35,7 @@ Example:
 
 The above example sets all four PWM channels (RGBW) to full color and brightness on i2c bus 1, PWM controller 0 (0x40)
 
-## Parameters (on Raspberry Pi)
+# Parameters for rgb_control (i2c parameters are listed for Raspberry Pi. Other platforms may differ)
 
  - i2c_index: 0,1 (default is 1)
  - i2c_address: 0-64 (default is 0, script handles conversion to hex and offset)
