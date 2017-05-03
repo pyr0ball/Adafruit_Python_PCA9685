@@ -30,9 +30,9 @@ pwm0 = Adafruit_PCA9685.PCA9685()
 #pwm2 = Adafruit_PCA9685.PCA9685(address=0x42, busnum=1)
 
 
-# Configure min and max servo pulse lengths
+# Configure min and max LED pulse lengths
 led_min = 0  # Min pulse length out of 4095
-led_max = 4095  # Max pulse length out of 4095
+led_max = 8  # Max pulse length out of 4095
 led_half = int(led_max/2)
 led_quart = int(led_max/4)
 
@@ -48,7 +48,7 @@ led_quart = int(led_max/4)
 #	pulse //= pulse_length
 #	pwm0.set_pwm(channel, 0, pulse)
 
-# Set frequency to 60hz, good for servos.
+# Set frequency to 960hz, good for eyes.
 pwm0.set_pwm_freq(960)
 
 print('Simple color phase on RGB LED, bus 0, channels 0-2 , press Ctrl-C to quit...')
