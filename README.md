@@ -21,13 +21,13 @@ Note that the pip install method **won't** install the example code.
 
 There are two new example scripts, and more complete set of explainations in the scripts.
 
-simpletest.py - phases between 1/4, 1/2 and full brightness on each channel (R, G, B) in order at 10hz
+`simpletest.py` - phases between 1/4, 1/2 and full brightness on each channel (R, G, B) in order at 10hz
 
-colorspectrum.py - allows you to set RGB color using 0-255 RGB format
+`colorspectrum.py` - allows you to set RGB color using 0-255 RGB format
 
-rgb_control.py - designed to be called by an external application (or terminal) using arguments
+`rgb_control.py` - designed to be called by an external application (or terminal) using arguments
 
-Syntax: rgb_control.py [i2c index] [i2c address in decimal] [PWM channel] [red] [green] [blue] [white] [brightness percent]
+Syntax: `rgb_control.py [i2c index] [i2c address in decimal] [PWM channel] [red] [green] [blue] [white] [brightness percent]`
 
 Example:
 
@@ -35,20 +35,13 @@ Example:
 
 The above example sets all four PWM channels (RGBW) to full color and brightness on i2c bus 1, PWM controller 0 (0x40)
 
-##Parameters (on Raspberry Pi)
+## Parameters (on Raspberry Pi)
 
-i2c_index: 0,1 (default is 1)
-
-i2c_address: 0-64 (default is 0, script handles conversion to hex and offset)
-
-PWM_Channel: 0-3 (default is 0, Each PCA9685 handles up to 4 complete RGBW channels)
-
-red: 0-255 (red channel color level based on 256 levels)
-
-green: 0-255 (green channel color level based on 256 levels)
-
-blue: 0-255 (blue channel color level based on 256 levels)
-
-white: 0-255 (white channel color level based on 256 levels)
-
-brightness: 1-100 (brightness level based on percentage)
+ - i2c_index: 0,1 (default is 1)
+ - i2c_address: 0-64 (default is 0, script handles conversion to hex and offset)
+ - PWM_Channel: 0-3 (default is 0, Each PCA9685 handles up to 4 complete RGBW channels)
+ - red: 0-255 (red channel color level based on 256 levels)
+ - green: 0-255 (green channel color level based on 256 levels)
+ - blue: 0-255 (blue channel color level based on 256 levels)
+ - white: 0-255 (white channel color level based on 256 levels)
+ - brightness: 1-100 (brightness level based on percentage)
