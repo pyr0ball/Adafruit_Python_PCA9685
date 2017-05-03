@@ -21,17 +21,12 @@ i2c_index = sys.argv[1]
 dec_address = sys.argv[2]
 hex_address = int(dec_address) + 64
 address = "%x" % hex_address
-pwm_ch = '"' + sys.argv[3] + '"'
+pwm_ch = int(sys.argv[3])
 red = int(sys.argv[4])
 gre = int(sys.argv[5])
 blu = int(sys.argv[6])
 whi = int(sys.argv[7])
 bright = sys.argv[8]
-
-print i2c_index
-print dec_address
-print pwm_ch
-print red
 
 # Uncomment to enable debug output.
 #import logging
@@ -61,33 +56,32 @@ rgb_pwm = int(led_brightness/256)
 # Set up easily readable variables for RGB color channels
 
 #-- Panel 0 --#
-red0 = 0
-green0 = 1
-blue0 = 2
-white0 = 3
+if pwm_ch == 0:
+	redl = 0
+	green = 1
+	blue = 2
+	white = 3
 
 #-- Panel 1 --#
-red1 = 4
-green1 = 5
-blue1 = 6
-white1 = 7
+if pwm_ch == 1:
+	redl = 4
+	green = 5
+	blue = 6
+	white = 7
 
 #-- Panel 2 --#
-red2 = 8
-green2 = 9
-blue2 = 10
-white2 = 11
+if pwm_ch == 2:
+	redl = 8
+	green = 9
+	blue = 10
+	white = 11
 
 #-- Panel 3 --#
-red3 = 12
-green3 = 13
-blue3 = 14
-white3 = 15
-
-R = 
-G
-B
-W
+if pwm_ch == 3:
+	redl = 12
+	green = 13
+	blue = 14
+	white = 15
 
 
 # Set frequency to 960hz, easy on the eyes.
@@ -95,7 +89,7 @@ pwm.set_pwm_freq(960)
 	
 	# PWM syntax: pwm[bus].set_pwm([channel], [off state], [on state])
 	# Example: pwm0.set_pwm(0, 0, int(rgb_pwm*255))
-pwm.set_pwm(('"' red '"' + pwm_ch), 0, rgb_pwm*red)
-pwm.set_pwm(('"' green '"' + pwm_ch), 0, rgb_pwm*gre)
-pwm.set_pwm(('"' blue '"' + pwm_ch), 0, rgb_pwm*blu)
-pwm.set_pwm(('"' white '"' + pwm_ch), 0, rgb_pwm*whi)
+pwm.set_pwm(redl, 0, rgb_pwm*red)
+pwm.set_pwm(green, 0, rgb_pwm*gre)
+pwm.set_pwm(blue, 0, rgb_pwm*blu)
+pwm.set_pwm(white, 0, rgb_pwm*whi)
