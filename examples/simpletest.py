@@ -32,7 +32,7 @@ pwm0 = Adafruit_PCA9685.PCA9685()
 
 # Configure min and max LED pulse lengths
 led_min = 0  # Min pulse length out of 4095
-led_max = 8  # Max pulse length out of 4095
+led_max = 32  # Max pulse length out of 4095
 led_half = int(led_max/2)
 led_quart = int(led_max/4)
 
@@ -59,16 +59,20 @@ while True:
 	pwm0.set_pwm(0, 0, led_max)
 	pwm0.set_pwm(1, 0, led_half)
 	pwm0.set_pwm(2, 0, led_quart)
+	pwm0.set_pwm(3, 0, led_max)
 	time.sleep(0.1)
 	pwm0.set_pwm(0, 0, led_half)
 	pwm0.set_pwm(1, 0, led_max)
 	pwm0.set_pwm(2, 0, led_half)
+	pwm0.set_pwm(3, 0, led_min)
 	time.sleep(0.1)
 	pwm0.set_pwm(0, 0, led_quart)
 	pwm0.set_pwm(1, 0, led_half)
 	pwm0.set_pwm(2, 0, led_max)
+	pwm0.set_pwm(3, 0, led_quart)
 	time.sleep(0.1)
 	pwm0.set_pwm(0, 0, led_half)
 	pwm0.set_pwm(1, 0, led_quart)
 	pwm0.set_pwm(2, 0, led_half)
+	pwm0.set_pwm(3, 0, led_half)
 	time.sleep(0.1)
